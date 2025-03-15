@@ -5,13 +5,14 @@ from .declarative_base import Base
 
 
 class Ability(Base):
+
     __tablename__ = "abilities"
     
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, unique=True, index=True)
     description = Column(String)
-    cap = Column(Integer)
-    cost = Column(Integer)
+    level_cap = Column(Integer) # max level for the ability
+    cost = Column(Integer) # skill point cost
     skills = relationship("Skill", back_populates="ability")
     milestones = relationship("AbilityMilestone", back_populates="ability")
     
